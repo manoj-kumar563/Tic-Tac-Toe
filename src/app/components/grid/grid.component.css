@@ -4,6 +4,7 @@
     justify-content: center;
     margin-left: 32%;
     margin-right: 32%;
+    cursor: pointer;
 }
 .row {
   display: flex;
@@ -53,4 +54,8 @@
     color: white;
     background-color: rgb(35 143 123);
     
+}
+.highlightSquare{
+    color:#0de93c;
+    font-size: 90px;
 }

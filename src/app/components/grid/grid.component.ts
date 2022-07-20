@@ -9,7 +9,7 @@ import { GameOverCount } from '../../enums/GameOverCount'
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.css'],
 })
-export class GridComponent implements OnInit, AfterViewInit {
+export class GridComponent implements OnInit {
   constructor(private renderer: Renderer2) { }
   @ViewChild('container')
   private container!: ElementRef;
@@ -39,11 +39,9 @@ export class GridComponent implements OnInit, AfterViewInit {
       this.data.push({
         number: num,
         symbol: '',
+        isWinningSquare : false
       });
     }
-  }
-  ngAfterViewInit() {
-
   }
 
   resetGame() {
@@ -51,7 +49,7 @@ export class GridComponent implements OnInit, AfterViewInit {
     this.count = 0;
     let data: postionData[] = [];
     data = this.data.map((eachData) => {
-      return { ...eachData, symbol: '' };
+      return { ...eachData, symbol: '' , isWinningSquare: false };
     });
     this.data = [];
     this.data = data;
@@ -59,6 +57,7 @@ export class GridComponent implements OnInit, AfterViewInit {
     this.isGameOver = false;
     this.isFirstUser = true;
     this.winner = "";
+    this.renderer.setStyle(this.container.nativeElement, 'pointerEvents', 'fill');
   }
 
   fillSymbols(number: number) {
@@ -98,18 +97,24 @@ export class GridComponent implements OnInit, AfterViewInit {
         }
       }
       if (xCount == 3) {
-        this.isGameOver = true;
-        this.count = 0;
+        this.finalUpdate(i);
         this.winner = Symbol.first;
         break;
       } else if (oCount == 3) {
-        this.isGameOver = true;
-        this.count = 0;
+        this.finalUpdate(i);
         this.winner = Symbol.second;
         break;
       } else{
         continue;
       }
     }
+  }
+  finalUpdate(i:number){
+    for(let k= 0 ; k <3 ; k++){      
+      this.data[this.combinations[i][k]].isWinningSquare = true;
+    } 
+    console.log(this.data);   
+    this.isGameOver = true;
+    this.count = 0;
   }
 }

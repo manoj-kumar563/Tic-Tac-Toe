@@ -11,9 +11,10 @@
   <div class="container" #container>
     <div class="row" *ngFor="let position of data; let element = index">
       <div (click)="fillSymbols(position.number)" class="square">
-        <p>
+        <p *ngIf="!data[element].isWinningSquare">
           {{ data[element].symbol }}
         </p>
+        <p *ngIf="data[element].isWinningSquare" class="highlightSquare"> {{ data[element].symbol }}</p>
       </div>
     </div>
   </div>
