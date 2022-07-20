@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-left: 32%;
+    margin-right: 32%;
+}
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 5px;
+}
+.game_title {
+  color: cadetblue;
+  font-size: 40px;
+  text-align: center;
+  font-weight: 400;
+}
+.square {
+    padding: 20px;
+    height: 70px;
+    width: 70px;
+    margin: 15px;
+    border-radius: 34px;
+    background-color: antiquewhite;
+    color: rgb(35 143 123);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+}
+
+.reset-section{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.winner_class{
+    color :rgb(35 143 123);
+}
+
+.message_class{
+    color: rgb(35 143 123);
+}
+
+.reset_btn{
+    width: 105px;
+    text-align: center;
+    height: 35px;
+    border-radius: 20px;
+    outline: none;
+    border: 1px dimgray;
+    color: white;
+    background-color: rgb(35 143 123);
+    
+}

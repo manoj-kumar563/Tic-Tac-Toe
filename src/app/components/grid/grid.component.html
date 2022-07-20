@@ -1,0 +1,24 @@
+<html>
+  <div class="game_title">
+    <p *ngIf="!isGameOver && !winner && !isGameStarted" class="message_class">Tic-Tac-Toe</p>
+    <p *ngIf="isGameStarted && !isGameOver && !winner" class="message_class">
+      {{ isFirstUser ? "'O'" : "'X'" }} Turn
+    </p>
+    <p *ngIf="isGameOver && winner" class="winner_class">Congratulations '{{ winner }}' Won</p>
+    <p *ngIf="isGameOver && !winner" class="message_class">Game Draw</p>
+  </div>
+
+  <div class="container" #container>
+    <div class="row" *ngFor="let position of data; let element = index">
+      <div (click)="fillSymbols(position.number)" class="square">
+        <p>
+          {{ data[element].symbol }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reset-section" (click)="resetGame()">
+    <button type="button" class="btn btn-success reset_btn">Reset</button>
+  </div>
+</html>
